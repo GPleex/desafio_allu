@@ -1,0 +1,237 @@
+table f_Base
+	lineageTag: 95ea6407-4a77-4155-8d6c-05af098f7f60
+
+	column cliente_id
+		dataType: string
+		lineageTag: fcc40904-1607-4b51-94f1-50eca6796f17
+		summarizeBy: none
+		sourceColumn: cliente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column vencimento_parcela
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0c92db9e-d601-4eb8-87d7-3769b47e217d
+		summarizeBy: none
+		sourceColumn: vencimento_parcela
+
+		variation Variation
+			isDefault
+			relationship: 5f6329f3-087a-4a3d-83d1-c34985c1ffb7
+			defaultHierarchy: LocalDateTable_9ea0beae-2eac-4759-bb49-18727f2ff362.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column status_pagamento
+		dataType: string
+		lineageTag: c0cba7a4-9d77-464d-9e21-2d5a646ff84f
+		summarizeBy: none
+		sourceColumn: status_pagamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor_parcela
+		dataType: double
+		lineageTag: 5deb67ba-afc0-441a-87ac-7886d116a192
+		summarizeBy: sum
+		sourceColumn: valor_parcela
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column parcela_recorrencia
+		dataType: double
+		formatString: 0
+		lineageTag: c036cf03-dd11-4aca-ad86-657cd5687f56
+		summarizeBy: sum
+		sourceColumn: parcela_recorrencia
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column cidade
+		dataType: string
+		lineageTag: 3e9073c4-c7fb-422f-b919-6c22cad8e3f8
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column estado
+		dataType: string
+		lineageTag: f7f5c7ce-20e0-4904-9340-0b36289e9a9f
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column idade
+		dataType: double
+		lineageTag: 1a308ede-759e-47d3-bbf6-fd54dee58a4c
+		summarizeBy: sum
+		sourceColumn: idade
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column faixa_etaria =
+			
+			SWITCH(
+			    TRUE(),
+			        'f_Base'[Idade] < 25, "<25",
+			        'f_Base'[Idade] >= 25 && 'f_Base'[Idade] <= 35, "25–35",
+			        'f_Base'[Idade] >= 36 && 'f_Base'[Idade] <= 45, "36–45",
+			        'f_Base'[Idade] >= 46 && 'f_Base'[Idade] <= 60, "46–60",
+			        'f_Base'[Idade] > 60, ">60",
+			    BLANK()
+			)
+		lineageTag: 6f6812d6-584c-4551-867c-5a5d39b69cad
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_pagamento_ajust
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 262cf6ab-571e-4c36-a4e0-e099fdfd8a56
+		summarizeBy: none
+		sourceColumn: data_pagamento_ajust
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_inicio_assinatura_ajust
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c56d5e26-09a1-4084-a40b-1981ba98e547
+		summarizeBy: none
+		sourceColumn: data_inicio_assinatura_ajust
+
+		variation Variation
+			isDefault
+			relationship: ce5da35f-ba93-4f7e-bc34-90395a5cc11c
+			defaultHierarchy: LocalDateTable_a716af5e-3470-4a04-ac65-00c1359aa3b7.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column pais = "BRASIL - " & f_Base[estado]
+		lineageTag: 64d025d2-7913-489c-9395-91571da53ef1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_risco = ```
+			
+			IF (
+			    f_Base[status_pagamento] IN {"failed", "chargedback"},
+			    "Inadimplente",
+			    "Adimplente"
+			)
+			
+			```
+		lineageTag: 144c043a-60ae-4644-a090-937cd6843d00
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column faixa_valor = ```
+			
+			VAR Valor = f_Base[valor_parcela]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    Valor <= 50, "0–50",
+			    Valor <= 100, "51–100",
+			    Valor <= 150, "101–150",
+			    Valor <= 200, "151–200",
+			    Valor <= 250, "201–250",
+			    Valor <= 300, "251–300",
+			    Valor <= 350, "301–350",
+			    Valor <= 400, "351–400",
+			    Valor <= 450, "401–450",
+			    Valor <= 500, "451–500",
+			    Valor <= 550, "501–550",
+			    Valor <= 600, "551–600",
+			    Valor <= 650, "601–650",
+			    ">651"   // caso apareça algum valor fora do padrão
+			)
+			
+			```
+		lineageTag: c04fef3c-3957-4a1d-8103-0afcd78db983
+		summarizeBy: none
+		sortByColumn: faixa_valor_ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column faixa_valor_ordem = ```
+			
+			VAR Valor = f_Base[valor_parcela]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    Valor <= 50, 1,
+			    Valor <= 100, 2,
+			    Valor <= 150, 3,
+			    Valor <= 200, 4,
+			    Valor <= 250, 5,
+			    Valor <= 300, 6,
+			    Valor <= 350, 7,
+			    Valor <= 400, 8,
+			    Valor <= 450, 9,
+			    Valor <= 500, 10,
+			    Valor <= 550, 11,
+			    Valor <= 600, 12,
+			    Valor <= 650, 13,
+			    99
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e678fa04-3628-45b9-b37a-9e4b33604830
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_Base = m
+		mode: import
+		queryGroup: 'DATA BASE'
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\Users\gusta\Downloads\desafio_BA_BI_dados.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Data Pagamento Ajustada" = Table.AddColumn(#"Cabeçalhos Promovidos", "data_pagamento_ajust", each DateTimeZone.ToLocal(
+				    DateTimeZone.FromText(
+				        Text.Replace([data_pagamento], " UTC", "Z")
+				    )
+				)),
+				    #"Data Inicio Assinatura Ajustada" = Table.AddColumn(#"Data Pagamento Ajustada", "data_inicio_assinatura_ajust", each DateTimeZone.ToLocal(
+				    DateTimeZone.FromText(
+				        Text.Replace([data_inicio_assinatura], " UTC", "Z")
+				    )
+				)),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Data Inicio Assinatura Ajustada",{"data_pagamento", "data_inicio_assinatura"}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Removidas",".",",",Replacer.ReplaceText,{"valor_parcela"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Valor Substituído",{{"data_pagamento_ajust", type date}, {"vencimento_parcela", type date}, {"valor_parcela", type number}, {"idade", type number}, {"data_inicio_assinatura_ajust", type date}, {"parcela_recorrencia", type number}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado",{"cliente_id", "data_pagamento_ajust", "vencimento_parcela", "status_pagamento", "valor_parcela", "parcela_recorrencia", "cidade", "estado", "idade"})
+				in
+				    #"Colunas Reordenadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

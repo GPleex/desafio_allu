@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 508,
+            "y": 597
+          },
+          "nodeIndex": "f_Base",
+          "nodeLineageTag": "95ea6407-4a77-4155-8d6c-05af098f7f60",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1026,
+            "y": 268
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "11d9a480-f534-432b-82a4-d3a82e020009",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 507,
+            "y": 132
+          },
+          "nodeIndex": "d_Calendario",
+          "nodeLineageTag": "51e0027d-8b13-4d0d-a509-203497c07ebd",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 106,
+            "y": 447.5
+          },
+          "nodeIndex": "d_Estados",
+          "nodeLineageTag": "e261c9af-f708-4688-bfcf-4b14a62d4c66",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": true,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

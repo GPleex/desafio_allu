@@ -1,0 +1,105 @@
+table d_Calendario
+	lineageTag: 51e0027d-8b13-4d0d-a509-203497c07ebd
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0ec77776-a00c-4faa-95d9-c90295811cc7
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: c850903e-59b0-49c3-a33a-39975e25f412
+			defaultHierarchy: LocalDateTable_cd685ef2-5298-4df0-a700-4e45d4fbbacf.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: cac876a0-5427-458f-890b-9c15b5129002
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: string
+		lineageTag: f7d0e679-629f-4f92-93b7-5fbd28d71c9a
+		summarizeBy: none
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Número Semana'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a9dd763-e1b4-42af-9888-7007f839a45d
+		summarizeBy: sum
+		sourceColumn: Número Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Número Mês'
+		dataType: int64
+		formatString: 0
+		lineageTag: 625030db-513b-44f5-b6a7-1a65d29a1189
+		summarizeBy: sum
+		sourceColumn: Número Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateInt
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a1d7b09-fd96-4eab-8c55-27bd90b6a572
+		summarizeBy: sum
+		sourceColumn: DateInt
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês
+		dataType: string
+		lineageTag: e24d2cfd-8db4-4237-92a2-b7be31a458a3
+		summarizeBy: none
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia da Semana'
+		dataType: string
+		lineageTag: d50df581-2cda-43ea-90fc-a0d4661b5cfb
+		summarizeBy: none
+		sourceColumn: Dia da Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês Ano'
+		dataType: string
+		lineageTag: 1468e794-3697-4b12-af54-30d54590279f
+		summarizeBy: none
+		sourceColumn: Mês Ano
+		sortByColumn: DateInt
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_Calendario = m
+		mode: import
+		queryGroup: CALENDÁRIO
+		source =
+				let
+				Source = fn_Calendario(List.Min(f_Base[data_pagamento_ajust]), List.Max(f_Base[data_pagamento_ajust]))
+				in
+				Source
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

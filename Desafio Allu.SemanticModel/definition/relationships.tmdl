@@ -1,0 +1,23 @@
+relationship 5f6329f3-087a-4a3d-83d1-c34985c1ffb7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Base.vencimento_parcela
+	toColumn: LocalDateTable_9ea0beae-2eac-4759-bb49-18727f2ff362.Date
+
+relationship c850903e-59b0-49c3-a33a-39975e25f412
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_Calendario.Data
+	toColumn: LocalDateTable_cd685ef2-5298-4df0-a700-4e45d4fbbacf.Date
+
+relationship ce5da35f-ba93-4f7e-bc34-90395a5cc11c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Base.data_inicio_assinatura_ajust
+	toColumn: LocalDateTable_a716af5e-3470-4a04-ac65-00c1359aa3b7.Date
+
+relationship 6c86b014-4850-ffb0-33b2-ef91be675bac
+	fromColumn: f_Base.data_pagamento_ajust
+	toColumn: d_Calendario.Data
+
+relationship 3469bafd-0087-77d3-6ea1-730ac1ca6a65
+	fromColumn: f_Base.estado
+	toColumn: d_Estados.Sigla
+

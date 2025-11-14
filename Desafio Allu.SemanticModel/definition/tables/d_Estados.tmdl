@@ -1,0 +1,67 @@
+table d_Estados
+	lineageTag: e261c9af-f708-4688-bfcf-4b14a62d4c66
+
+	column Estado
+		dataType: string
+		lineageTag: 0d0b59d9-b47c-4582-afb8-a8630ba93122
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sigla
+		dataType: string
+		lineageTag: c8c31677-5484-4a29-8281-3ce5e1980d5f
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: Sigla
+
+		annotation SummarizationSetBy = Automatic
+
+	column Capital
+		dataType: string
+		lineageTag: 2f35c503-e90f-435f-9304-c164e84ac866
+		summarizeBy: none
+		sourceColumn: Capital
+
+		annotation SummarizationSetBy = Automatic
+
+	column Região
+		dataType: string
+		lineageTag: aa141c52-b9a2-44f4-8af8-e05fe79ef815
+		summarizeBy: none
+		sourceColumn: Região
+
+		annotation SummarizationSetBy = Automatic
+
+	column Localidade
+		dataType: string
+		lineageTag: a9840ef6-2c75-4b51-a667-b14b5003ccd9
+		summarizeBy: none
+		sourceColumn: Localidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Link
+		dataType: string
+		lineageTag: 9b649d76-5caf-42a5-bc31-350f192cd31e
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: Link
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_Estados = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("tZe9btswEMdfRcicRHs3SpYVGdYHKDlDgwy0zdgsZNGgpBbIFnTO1hdoO3XIlEfgi/VI2ZJsS0UHZqFg4I78+T7+PD48XCEXe1fX8IEFM245ghQrDj8iLioKXwejNJhbN9bBcltV+/KTbQvy7XbDqm29rEsqVryoaFHdrvjOXm5oQStuL0mxpkyQ8mYpbEGfSntLybq0d6SsqLDZjoBhaSP3dl9srh6vAWaO/BilimcOS0hWlMn3BmZNyzOe1tg80rxDClEiXxRR0hCRvfw5GJ6joXmapE/zOY6aCIWapyB1OYJztDQPFLZADroLkDpXLSnJv5I1FyMJO9oa53FQy+N6COssuKpWpxAVktNnMkLUWhtHcr0WaRKkGQ6y2Jp6Ew/rwp5MFQVsIt9ypuBcOEbwm/gccMDXOOpk2qJ6aSJf9XkpirIYTvNUAd2zSr4LDZrWF0G8dDKO6KUtoh8H8kVB+eoknzP5q/hnCFsH41R+3FKFCKPoTn5XTKFuBfmbW/NavpUjpdf3ME4Woh4ZJMbHcZpqtkxFqmZkqUVsLGanTubxsiE8awIVtNC6r9Llkt2eW75QW/4fareBeeKuAMMAVNXyoRsDhRn6iobm3Lrjgj2rI4bb5MzPPKLfIiYHVUtQwyb/7IauiOSjxC9BfRQkX/XtkDiwzLhqjISWJR8T5Z6LeTLnhCxqwoR1UwhWsWWjcfk5T/RBgcIdjocjFDoLV3Vcoi4vTFfsiY4FqW9unqu7vZIALeSrYgpgyaigJStGU3c0Nk8UtEQ4gE73rBmKvACrv49nh9l1Ta0ZKWA3PtyCF57GMfHsBNOHyoEDQZeiGGc6qZEKHYGpZCSEw27mQaMR0EZAsZKoBASDWyinG0Ev22LIzTxmp7s4jibyR6QnSJ28Bu+e5tvB50rf3jxX3OMCRdd3PlY64nBi3bOyIsNMR1vzRJ2UqDEMWS7KEIY7R2VOPe6mOdxPpJDve56z8jKfF17GEdPuoZfC4APCupirRKbJcWBKSJ2P9O6Jh3m07omVetgPtACn+mEs4Mn3pR7p1s7YPFKnwVnsQnKCSDWlHrATkoP1UIX1TY0jZYeqf/wL", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Estado = _t, Sigla = _t, Capital = _t, Região = _t, Localidade = _t, Link = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Estado", type text}, {"Sigla", type text}, {"Capital", type text}, {"Região", type text}, {"Localidade", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

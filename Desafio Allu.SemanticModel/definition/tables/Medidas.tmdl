@@ -1,0 +1,53 @@
+table Medidas
+	lineageTag: 11d9a480-f534-432b-82a4-d3a82e020009
+
+	measure Total = COUNT(f_Base[cliente_id]) + 0
+		formatString: 0
+		lineageTag: b02c21f4-4653-4190-9159-8399e8ca54d8
+
+	measure Taxa_Inadimplencia =
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNTROWS(f_Base),
+			        f_Base[status_pagamento] IN {"failed", "chargedback"}
+			    ),
+			    CALCULATE(
+			        COUNTROWS(f_Base),
+			        NOT (f_Base[status_pagamento] IN {"future"})
+			    )
+			) + 0
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f4412c07-fec0-42f6-94b1-cf115cc592bf
+
+	measure VMP = average(f_Base[valor_parcela]) + 0
+		lineageTag: e96d4118-23ea-4bd1-8421-0187bbfcbf60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Taxa_Failed_Chargedback = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNTROWS(f_Base),
+			        f_Base[status_pagamento] IN {"failed", "chargedback"}
+			    ),
+			    COUNTROWS(f_Base)
+			) + 0
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a7c00dab-4347-47ed-be15-2e366c3ae5ca
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

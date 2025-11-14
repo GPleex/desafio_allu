@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Desafio Allu"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "62477458-779a-4932-b2ff-e2c2aa876183"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "158ddb901db28a05b060",
+  "displayName": "Dash",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "b5378d4e069596cbd9d4",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [
+      {
+        "properties": {
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Frame 1 (2).png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Frame_1_(2)4287069507667266.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#191921'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#191921'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "289feb46ed716aa15915",
+      "target": "f9c472fba250470b0be8",
+      "type": "DataFilter"
+    },
+    {
+      "source": "289feb46ed716aa15915",
+      "target": "baaf514a96a2c60d9110",
+      "type": "DataFilter"
+    },
+    {
+      "source": "289feb46ed716aa15915",
+      "target": "9953c2efccbbd4b9b553",
+      "type": "DataFilter"
+    },
+    {
+      "source": "eec624fea4c040276a7d",
+      "target": "9953c2efccbbd4b9b553",
+      "type": "DataFilter"
+    },
+    {
+      "source": "eec624fea4c040276a7d",
+      "target": "f9c472fba250470b0be8",
+      "type": "DataFilter"
+    },
+    {
+      "source": "9953c2efccbbd4b9b553",
+      "target": "f9c472fba250470b0be8",
+      "type": "DataFilter"
+    },
+    {
+      "source": "baaf514a96a2c60d9110",
+      "target": "9953c2efccbbd4b9b553",
+      "type": "DataFilter"
+    },
+    {
+      "source": "baaf514a96a2c60d9110",
+      "target": "f9c472fba250470b0be8",
+      "type": "DataFilter"
+    },
+    {
+      "source": "f9c472fba250470b0be8",
+      "target": "9953c2efccbbd4b9b553",
+      "type": "DataFilter"
+    }
+  ]
+}
