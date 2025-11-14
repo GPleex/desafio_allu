@@ -40,7 +40,7 @@ A ideia foi unir o melhor dos dois mundos:
 ## 📊 Dashboard Online
 
 👉 **Link do relatório no Power BI:**  
-https://SEU-LINK-AQUI
+https://app.powerbi.com/view?r=eyJrIjoiOTUzNzNjYjctYjNlMy00YzM5LThlMDgtNjI5NGM3ZTliOTIwIiwidCI6IjVlYzZhYTJhLWVmYzctNGIyNS1iZTIxLTNhYzhmZmM2MzAxYyJ9&navContentPaneEnabled=false&actionBarEnabled=false
 
 _(Substitua pelo link público publicado.)_
 
