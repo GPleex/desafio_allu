@@ -10,19 +10,19 @@ Aqui tem SQL, DAX, modelagem, dashboard em Power BI e estrutura PBIX + PBIP orga
 
 📦 allu-desafio-bi
 │
-├── 📂 pbip/ → Projeto Power BI em formato PBIP (versionável)
-│ ├── semanticModel/
-│ ├── report/
-│ └── model.bim
+├── 📂 pbip/                      → Projeto Power BI em formato PBIP (versionável)
+│   ├── semanticModel/
+│   ├── report/
+│   └── model.bim
 │
-├── 📄 Allu_Desafio_BI.pbix → Arquivo completo para abrir direto no Power BI
+├── 📄 Allu_Desafio_BI.pbix       → Arquivo completo para abrir direto no Power BI
 │
 ├── 📂 sql/
-│ ├── modelagem_inadimplencia.sql
-│ └── exploracao.sql
+│   ├── modelagem_inadimplencia.sql
+│   └── exploracao.sql
 │
 ├── 📂 images/
-│ └── dashboard_preview.png
+│   └── dashboard_preview.png
 │
 └── README.md
 
