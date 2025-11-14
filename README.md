@@ -40,7 +40,10 @@ A ideia foi unir o melhor dos dois mundos:
 ## 📊 Dashboard Online
 
 👉 **Link do relatório no Power BI:**  
-https://app.powerbi.com/view?r=eyJrIjoiOTUzNzNjYjctYjNlMy00YzM5LThlMDgtNjI5NGM3ZTliOTIwIiwidCI6IjVlYzZhYTJhLWVmYzctNGIyNS1iZTIxLTNhYzhmZmM2MzAxYyJ9&navContentPaneEnabled=false&actionBarEnabled=false
+<a href="https://app.powerbi.com/view?r=eyJrIjoiOTUzNzNjYjctYjNlMy00YzM5LThlMDgtNjI5NGM3ZTliOTIwIiwidCI6IjVlYzZhYTJhLWVmYzctNGIyNS1iZTIxLTNhYzhmZmM2MzAxYyJ9&navContentPaneEnabled=false&actionBarEnabled=false" target="_blank">
+  <img src="https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=flat&logo=powerbi&logoColor=black">
+</a>
+
 
 _(Substitua pelo link público publicado.)_
 
