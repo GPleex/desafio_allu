@@ -44,9 +44,6 @@ A ideia foi unir o melhor dos dois mundos:
   <img src="https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=flat&logo=powerbi&logoColor=black">
 </a>
 
-
-_(Substitua pelo link público publicado.)_
-
 ---
 
 ## 🧠 Como montei a solução
